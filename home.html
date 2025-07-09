@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home - Auto Wheels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <header>
+      <nav class="header-nav">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div class="logo">
+          <img src="images/1.png" />
+        </div>
+        <div class="nav-bar" id="navBar">
+          <button class="close-menu-btn" id="closeMenuBtn">✕</button>
+          <a href="home.html" class="active">Home</a>
+          <a href="home.html#aboutus-section">About</a>
+          <a href="modelpage.html">Models</a>
+          <a href="home.html#contactus-section">Contact us</a>
+        </div>
+
+        <div class="user-controls">
+          <div class="nav-search-icon" id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="favorites">
+            <a class="fav-link" href="favorites.html">
+              <i class="fa-solid fa-heart"></i><span id="fav-count">0</span>
+            </a>
+          </div>
+          <div class="user-account">
+            <a class="user-link" href="user.html">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!--search bar-->
+      <div class="search-popup" id="searchPopup">
+        <div class="search-container">
+          <form class="search-bar" id="searchForm">
+            <div class="search-input-container">
+              <div class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search for anything..."
+                autocomplete="off"
+              />
+            </div>
+            <button
+              class="close-button"
+              id="closeBtn"
+              aria-label="Close search"
+            >
+              <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+          </form>
+
+          <div class="search-hint" id="searchHint"></div>
+        </div>
+      </div>
+    </header>
+    <div class="header-overlay"></div>
+
+    <!--home section-->
+    <section class="home-section">
+      <div class="video-container">
+        <video
+          class="bg-video video-1 active"
+          src="videos/mclaren-1.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
+
+        <video
+          class="bg-video video-2"
+          src="videos/mclaren-2.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
+
+        <video
+          class="bg-video video-3"
+          src="videos/mclaren-3.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
+
+        <video
+          class="bg-video video-4"
+          src="videos/mclaren-4.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
+
+        <video
+          class="bg-video video-5 active"
+          src="videos/mclaren-5.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
+      </div>
+      <div class="home-content">
+        <p>best auto services</p>
+        <h1>
+          Innovative Solutions <br />
+          For Automobile
+        </h1>
+        <h3 class="car-model-text active">765LT spider</h3>
+        <h3 class="car-model-text">artura</h3>
+        <h3 class="car-model-text">750s</h3>
+        <h3 class="car-model-text">765lt</h3>
+        <h3 class="car-model-text">750s spider</h3>
+
+        <button>Learn More</button>
+      </div>
+
+      <div class="slider-navigation">
+        <div class="model-indicators">
+          <div
+            class="model-indicator active"
+            data-model="765LT Spider"
+            data-index="0"
+          ></div>
+          <div class="model-indicator" data-model="Artura" data-index="1"></div>
+          <div class="model-indicator" data-model="750S" data-index="2"></div>
+          <div class="model-indicator" data-model="765LT" data-index="3"></div>
+          <div
+            class="model-indicator"
+            data-model="750S Spider"
+            data-index="4"
+          ></div>
+        </div>
+        <div class="slider-arrows">
+          <div class="slider-arrow prev-slide">
+            <i class="fas fa-chevron-up"></i>
+          </div>
+          <div class="slider-arrow next-slide">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--search form-->
+    <div class="search-form">
+      <div class="form-group">
+        <label for="pickup-location">Pickup Location</label>
+        <select id="pickup-location">
+          <option value="">Select location</option>
+          <option value="airport">Airport</option>
+          <option value="downtown">Downtown</option>
+          <option value="north">North Side</option>
+          <option value="south">South Side</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dropoff-location">Drop-off Location</label>
+        <select id="dropoff-location">
+          <option value="">Select location</option>
+          <option value="airport">Airport</option>
+          <option value="downtown">Downtown</option>
+          <option value="north">North Side</option>
+          <option value="south">South Side</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="pickup-date">Pickup Date</label>
+        <input type="date" id="pickup-date" />
+      </div>
+      <div class="form-group">
+        <label for="dropoff-date">Drop-off Date</label>
+        <input type="date" id="dropoff-date" />
+      </div>
+      <div>
+        <button class="search-btn" id="search-btn">
+          Search Available Cars
+        </button>
+      </div>
+    </div>
+
+    <!-- image section -->
+    <section class="img-section">
+      <div class="flex-container">
+        <div
+          class="flex-item"
+          style="background-image: url('images/carLine.jpg')"
+        >
+          <div class="flex-overlay"></div>
+          <div class="flex-content">
+            <p class="tagline">Our current offers.</p>
+            <h2 class="flex-tagline">
+              Until June 30, discover our offers at your distributor.
+            </h2>
+            <a href="#" class="flex-btn">Learn more</a>
+          </div>
+        </div>
+
+        <div
+          class="flex-item"
+          style="background-image: url('images/img2.jpeg')"
+        >
+          <div class="flex-overlay"></div>
+          <div class="flex-content">
+            <p class="tagline">Because we are AutoWheels.</p>
+            <h2 class="flex-tagline">Discover our vision of technology.</h2>
+            <a href="#" class="flex-btn">Learn more</a>
+          </div>
+        </div>
+
+        <div
+          class="flex-item"
+          style="background-image: url('images/img3.jpeg')"
+        >
+          <div class="flex-overlay"></div>
+          <div class="flex-content">
+            <p class="tagline">Online showroom</p>
+            <h2 class="flex-tagline">Our stock of new vehicles.</h2>
+            <a href="#" class="flex-btn">Learn more</a>
+          </div>
+        </div>
+
+        <div
+          class="flex-item"
+          style="background-image: url('images/img4.jpeg')"
+        >
+          <div class="flex-overlay"></div>
+          <div class="flex-content">
+            <p class="tagline">Our charging solutions.</p>
+            <h2 class="flex-tagline">Discover our charging solutions.</h2>
+            <a href="#" class="flex-btn">Learn more</a>
+          </div>
+        </div>
+
+        <div
+          class="flex-item"
+          style="background-image: url('images/lineofCARS.jpeg')"
+        >
+          <div class="flex-overlay"></div>
+          <div class="flex-content">
+            <p class="tagline">Book an appointment online.</p>
+            <h2 class="flex-tagline">
+              After-sales service reservation in just a few clicks.
+            </h2>
+            <a href="#" class="flex-btn">Book now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--aboutus section-->
+
+    <section class="aboutus-section" id="aboutus-section">
+      <div class="info-container">
+        <div class="faq-section">
+          <div class="about">
+            <button class="about-button">
+              How do I book a car?
+              <span class="plus">+</span>
+            </button>
+            <div class="about-content">
+              <p>
+                You can easily book a car online through our website, by phone,
+                or by visiting one of our rental locations.
+              </p>
+            </div>
+          </div>
+
+          <div class="about">
+            <button class="about-button">
+              What types of cars do you offer?
+              <span class="plus">+</span>
+            </button>
+            <div class="about-content">
+              <p>
+                We offer a variety of vehicles including economy cars, sedans,
+                SUVs, vans, and luxury models — something for every trip and
+                budget.
+              </p>
+            </div>
+          </div>
+
+          <div class="about">
+            <button class="about-button">
+              How long can I rent a car for?
+              <span class="plus">+</span>
+            </button>
+            <div class="about-content">
+              <p>
+                You can rent a car for a day, a week, a month, or even longer.
+                We offer flexible rental durations to fit your needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="about">
+            <button class="about-button">
+              Can I modify or cancel my reservation?
+              <span class="plus">+</span>
+            </button>
+            <div class="about-content">
+              <p>
+                Yes, you can easily modify or cancel your reservation. We
+                recommend doing it at least 24 hours in advance to avoid any
+                fees.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <div class="about-section-header">ABOUT US</div>
+          <h2>What Make Us The Best Car Rental Service?</h2>
+          <p>
+            At AutoWheels, we go beyond just handing over car keys we deliver an
+            experience. From fuel-efficient compact cars to luxury sedans,
+            rugged SUVs, and vans for group travel, we’ve got a vehicle for
+            every journey.
+          </p>
+          <button class="discover-button">Discover More</button>
+        </div>
+      </div>
+    </section>
+
+    <!--car slider section-->
+
+    <section class="car-slider">
+      <div class="car-slider-container">
+        <div class="slider-car">
+          <!--car1 -->
+          <div
+            class="slide active"
+            style="background-image: url('images/img2.jpeg')"
+          >
+            <div class="info-panel">
+              <h2 class="car-title">Tesla Model S</h2>
+              <p class="car-category">Electric Sedan</p>
+              <p class="car-description">
+                Experience the future of driving with the Tesla Model S. This
+                all-electric sedan combines luxury, performance, and
+                cutting-edge technology for an unparalleled driving experience.
+              </p>
+              <div class="specs-price-container">
+                <div class="car-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">405 mi</div>
+                    <div class="spec-name">Range</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">3.1 s</div>
+                    <div class="spec-name">0-60 mph</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">155 mph</div>
+                    <div class="spec-name">Top Speed</div>
+                  </div>
+                </div>
+                <div class="price-cta">
+                  <p class="car-price">Starting at $74,990</p>
+                  <a href="#" class="learn-more">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- car2 -->
+          <div class="slide" style="background-image: url('images/img2.jpeg')">
+            <div class="info-panel">
+              <h2 class="car-title">BMW i4</h2>
+              <p class="car-category">Electric Performance</p>
+              <p class="car-description">
+                The BMW i4 blends classic BMW driving dynamics with
+                zero-emissions electric power. Enjoy sporty handling with the
+                environmental benefits of an all-electric vehicle.
+              </p>
+              <div class="specs-price-container">
+                <div class="car-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">301 mi</div>
+                    <div class="spec-name">Range</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">3.7 s</div>
+                    <div class="spec-name">0-60 mph</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">140 mph</div>
+                    <div class="spec-name">Top Speed</div>
+                  </div>
+                </div>
+                <div class="price-cta">
+                  <p class="car-price">Starting at $55,400</p>
+                  <a href="#" class="learn-more">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- car3-->
+          <div class="slide" style="background-image: url('images/img3.jpeg')">
+            <div class="info-panel">
+              <h2 class="car-title">Audi e-tron GT</h2>
+              <p class="car-category">Electric Sport</p>
+              <p class="car-description">
+                The Audi e-tron GT represents the future of electric
+                performance, combining stunning design with exceptional driving
+                dynamics and Audi's legendary quattro all-wheel drive.
+              </p>
+              <div class="specs-price-container">
+                <div class="car-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">238 mi</div>
+                    <div class="spec-name">Range</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">3.1 s</div>
+                    <div class="spec-name">0-60 mph</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">152 mph</div>
+                    <div class="spec-name">Top Speed</div>
+                  </div>
+                </div>
+                <div class="price-cta">
+                  <p class="car-price">Starting at $102,400</p>
+                  <a href="#" class="learn-more">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-controls">
+          <div class="control-btn prev">❮</div>
+          <div class="control-btn next">❯</div>
+        </div>
+
+        <div class="dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!--reviews section-->
+    <section class="reviews-section">
+      <div class="testimonial-container">
+        <div class="testimonial-slider">
+          <div class="testimonial-content">
+            <div class="testimonial active">
+              <p class="testimonial-quote">
+                "I listed my car on this site and had a buyer contact me within
+                3 days! The process was smooth, and the form made everything
+                easy to manage. Highly recommend!"
+              </p>
+              <div class="testimonial-profile">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                  <h4>Liam R.</h4>
+                  <p>Seller</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                "As a first-time car buyer, I appreciated how simple it was to
+                browse listings and filter by my budget. I found the perfect car
+                in my area and booked a test drive in minutes!"
+              </p>
+              <div class="testimonial-profile">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                  <h4>Sarah Johnson</h4>
+                  <p>Buyer</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                "I’ve used other platforms, but this one was by far the most
+                intuitive. I love that I can save listings and come back to them
+                later. Excellent user experience!"
+              </p>
+              <div class="testimonial-profile">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                  <h4>Michael Torres</h4>
+                  <p>Buyer & Seller</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-button prev-button">&#10094;</button>
+            <button class="nav-button next-button">&#10095;</button>
+          </div>
+        </div>
+        <div class="testimonials-info">
+          <h5>Testimonials</h5>
+          <h2>What They Say About Us?</h2>
+          <p>
+            Smooth, fast, and easy to use! I sold my car within a week. The
+            platform made everything simple — from uploading photos to chatting
+            with buyers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--car cards section-->
+
+    <section>
+      <div class="rent-container">
+        <h1 class="rent-title">Top Rated<br />Rented Cars</h1>
+        <p class="rent-description">
+          Book your rental today and hit the road with ease!
+        </p>
+        <div class="filters">
+          <button class="filter-btn active">Porsche</button>
+          <button class="filter-btn">Chevrolet</button>
+          <button class="filter-btn">Volvo</button>
+          <button class="filter-btn">Mitsubishi</button>
+        </div>
+        <div class="car-container">
+          <div class="car-card">
+            <div class="tag">Gasoline</div>
+            <img src="images/car1.avif" alt="Mitsubishi" />
+            <h3 class="card-title">718 Boxster</h3>
+            <p class="card-description">Automatic/Manual</p>
+
+            <p class="card-price">
+              Starting at <br />
+              <span class="price">$300</span> /Day
+            </p>
+          </div>
+
+          <div class="car-card">
+            <div class="tag">Gasoline</div>
+            <img src="images/car2.avif" alt="Porsche" />
+            <h3 class="card-title">911 Carrera</h3>
+            <p class="card-description">Automatic</p>
+
+            <p class="card-price">
+              Starting at <br />
+              <span class="price">$250</span> /Day
+            </p>
+          </div>
+
+          <div class="car-card">
+            <div class="tag">Gasoline</div>
+            <img src="images/car3.avif" alt="Porsche" />
+            <h3 class="card-title">718 Boxster</h3>
+            <p class="card-description">Automatic</p>
+
+            <p class="card-price">
+              Starting at <br />
+              <span class="price">$350</span> /Day
+            </p>
+          </div>
+
+          <div class="car-card">
+            <div class="tag">Electric</div>
+            <img src="images/car4.avif" alt="Porsche" />
+            <h3 class="card-title">Macan</h3>
+            <p class="card-description">Automatic</p>
+
+            <p class="card-price">
+              Starting at <br />
+              <span class="price">$230</span> /Day
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--contact us section-->
+    <section id="contactus-section">
+      <div class="contact-us section" id="contact">
+        <div class="overlay-leftside"></div>
+        <div class="container">
+          <div class="row">
+            <div class="right-side">
+              <div class="section-heading">
+                <h6>Contact Us</h6>
+                <h2>Feel free to contact us anytime</h2>
+                <p>
+                  Have questions about our car rental options, pricing, or
+                  availability? Our team is here to help! Whether you're
+                  planning a weekend getaway or need a reliable vehicle for
+                  business travel, feel free to reach out.
+                </p>
+                <div class="special-offer">
+                  <div class="special-offer-content">
+                    <span class="offer">off<br /><em>50%</em></span>
+                    <div>
+                      <h6>Valid: <em>24 April 2036</em></h6>
+                      <h4>Special Offer <em>50%</em> OFF!</h4>
+                    </div>
+                  </div>
+                  <a href="#"><i class="fa fa-angle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="left-side">
+              <div class="contact-us-content">
+                <form id="contact-form" action="" method="post">
+                  <div class="row-form">
+                    <fieldset>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Your Name..."
+                        autocomplete="on"
+                        required
+                      />
+                    </fieldset>
+                  </div>
+                  <div class="row-form">
+                    <fieldset>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        pattern="[^ @]*@[^ @]*"
+                        placeholder="Your E-mail..."
+                        required
+                      />
+                    </fieldset>
+                  </div>
+                  <div class="row-form">
+                    <fieldset>
+                      <textarea
+                        name="message"
+                        id="message"
+                        placeholder="Your Message"
+                      ></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="row-form">
+                    <fieldset>
+                      <button
+                        type="submit"
+                        id="form-submit"
+                        class="contactus-button"
+                      >
+                        Send Message Now
+                      </button>
+                    </fieldset>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--footer section-->
+    <section class="footer">
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h3>AutoWheels</h3>
+            <p>
+              Your trusted partner for car rentals. We provide quality vehicles
+              at affordable prices to make your journey comfortable and
+              enjoyable.
+            </p>
+            <div class="social-media">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="#"><i class="fas fa-car"></i> Car Fleet</a>
+              <a href="#"><i class="fas fa-tag"></i> Special Offers</a>
+              <a href="#"><i class="fas fa-map-marker-alt"></i> Locations</a>
+              <a href="#"><i class="fas fa-question-circle"></i> FAQs</a>
+              <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+              <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>
+          </div>
+
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Drive Street, Car City</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-phone"></i>
+              <span>(555) 123-4567</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-envelope"></i>
+              <span>info@autowheels.com</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 8:00 AM - 8:00 PM</span>
+            </div>
+          </div>
+
+          <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>
+              Subscribe to our newsletter to receive updates on our latest
+              offers and discounts.
+            </p>
+            <form action="#" method="post">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 AutoWheels Car Rentals. All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

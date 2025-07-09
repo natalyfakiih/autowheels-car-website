@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Auto Wheels</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        color: #343a40;
+        background-color: #f9fafb;
+        line-height: 1.6;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .back-link i {
+        margin-right: 8px;
+      }
+
+      .back-link:before {
+        content: "";
+        position: absolute;
+        background: #ff7eb3;
+        width: 0;
+        height: 2px;
+        bottom: -3px;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #ff7eb3;
+      }
+
+      .back-link:hover:before {
+        width: 100%;
+      }
+
+      .checkout-container {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+        color: #343a40;
+        font-size: 32px;
+        position: relative;
+        padding-bottom: 12px;
+      }
+
+      h1:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #ff7eb3;
+        border-radius: 2px;
+      }
+
+      .product-summary {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .product-image-container {
+        margin-bottom: 25px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .product-summary img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+
+      .product-summary img:hover {
+        transform: scale(1.02);
+      }
+
+      .product-details h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .product-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-item i {
+        color: #ff7eb3;
+        font-size: 20px;
+        width: 20px;
+      }
+
+      .price-tag {
+        background: linear-gradient(135deg, #ff7eb3 0%, #ffd6e7 100%);
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 10px;
+        box-shadow: 0 2px 8px #ff7eb45e;
+      }
+
+      .checkout-form-container {
+        flex: 1;
+        background-color: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dadada;
+        font-weight: 500;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 16px;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #dadada;
+        border-radius: 8px;
+        transition: all 0.3s;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: #ff7eb3;
+      }
+
+      .input-field::placeholder {
+        color: #adb5bd;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+
+      .form-row .input-group {
+        flex: 1;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #ff7eb3;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-family: "Poppins", sans-serif;
+        margin-top: 15px;
+        box-shadow: 0 4px 12px #ff7eb45e;
+      }
+
+      .checkout-btn:hover {
+        background-color: #ffd6e7;
+        transform: translateY(-2px);
+      }
+
+      .checkout-btn:active {
+        transform: translateY(0);
+      }
+
+      .confirmation {
+        background-color: #ecfdf5;
+        border-left: 4px solid #10b981;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 30px;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .confirmation-content {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .confirmation-icon {
+        background-color: #10b981;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .confirmation-text {
+        font-weight: 500;
+      }
+
+      .confirmation-details {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+
+      .credit-cards {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .credit-cards i {
+        font-size: 24px;
+        color: #6c757d;
+      }
+
+      @media (max-width: 767px) {
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .product-info {
+          grid-template-columns: 1fr;
+        }
+
+        .checkout-container {
+          flex-direction: column;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="modelpage.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Products
+      </a>
+    </div>
+    <h1>Complete Your Purchase</h1>
+
+    <div class="checkout-container">
+      <div class="product-summary">
+        <div class="product-image-container">
+          <img id="summary-image" src="" alt="Car Image" />
+        </div>
+
+        <div class="product-details">
+          <h2 id="summary-title"></h2>
+
+          <div class="product-info">
+            <div class="info-item">
+              <i class="fas fa-tag"></i>
+              <div>
+                <strong>Brand</strong>
+                <div id="summary-brand"></div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-calendar-alt"></i>
+              <div>
+                <strong>Year</strong>
+                <div id="summary-year"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price-tag" id="summary-price"></div>
+        </div>
+      </div>
+
+      <div class="checkout-form-container">
+        <h3 class="section-title">Billing Information</h3>
+
+        <form id="checkout-form">
+          <div class="input-group">
+            <label for="fullname">Full Name</label>
+            <input
+              type="text"
+              id="fullname"
+              class="input-field"
+              placeholder="Nataly Fakih"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              class="input-field"
+              placeholder="natalyfakih@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="shipping">Shipping Address</label>
+            <input
+              type="text"
+              id="shipping"
+              class="input-field"
+              placeholder="123 Antonine University, Baabda, Lebanon"
+              required
+            />
+          </div>
+
+          <h3 class="section-title">Payment Details</h3>
+
+          <div class="input-group">
+            <label for="card">Card Number</label>
+            <input
+              type="text"
+              id="card"
+              class="input-field"
+              placeholder="1234 5678 9012 3456"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="expiry">Expiry Date</label>
+              <input type="month" id="expiry" class="input-field" required />
+            </div>
+
+            <div class="input-group">
+              <label for="cvv">CVV</label>
+              <input
+                type="text"
+                id="cvv"
+                class="input-field"
+                placeholder="123"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="credit-cards">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-discover"></i>
+          </div>
+
+          <button type="submit" class="checkout-btn">
+            <i class="fas fa-lock"></i> Complete Purchase
+          </button>
+        </form>
+
+        <div class="confirmation" id="confirmation-message">
+          <div class="confirmation-content">
+            <div class="confirmation-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            <div>
+              <div class="confirmation-text">
+                Thank you! Your order has been placed.
+              </div>
+              <div class="confirmation-details">
+                You will receive a confirmation email shortly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const summaryProduct = JSON.parse(localStorage.getItem("CarProduct"));
+
+      document.getElementById("summary-title").textContent =
+        summaryProduct.title;
+      document.getElementById("summary-brand").textContent =
+        summaryProduct.brand;
+      document.getElementById("summary-year").textContent = summaryProduct.year;
+      document.getElementById(
+        "summary-price"
+      ).textContent = `$${summaryProduct.price},000.00`;
+      document.getElementById("summary-image").src = summaryProduct.image;
+
+      document
+        .getElementById("checkout-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          document.getElementById("confirmation-message").style.display =
+            "block";
+
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Models - Auto Wheels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/modelStyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <header>
+      <nav class="header-nav">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div class="logo">
+          <img src="images/1.png" />
+        </div>
+        <div class="nav-bar" id="navBar">
+          <button class="close-menu-btn" id="closeMenuBtn">✕</button>
+          <a href="home.html">Home</a>
+          <a href="home.html#aboutus-section">About</a>
+          <a href="modelpage.html" class="active">Models</a>
+          <a href="home.html#contactus-section">Contact us</a>
+        </div>
+
+        <div class="user-controls">
+          <div class="nav-search-icon" id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="favorites">
+            <a class="fav-link" href="favorites.html">
+              <i class="fa-solid fa-heart"></i><span id="fav-count">0</span>
+            </a>
+          </div>
+          <div class="user-account">
+            <a class="user-link" href="user.html">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!--search bar-->
+      <div class="search-popup" id="searchPopup">
+        <div class="search-container">
+          <form class="search-form" id="searchForm">
+            <div class="search-input-container">
+              <div class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search for anything..."
+                autocomplete="off"
+              />
+            </div>
+            <button
+              class="close-button"
+              id="closeBtn"
+              aria-label="Close search"
+            >
+              <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+          </form>
+
+          <div class="search-hint" id="searchHint"></div>
+        </div>
+      </div>
+    </header>
+    <div class="header-overlay"></div>
+
+    <!--models section-->
+
+    <section class="models-section">
+      <div class="header-section">
+        <h1 class="header-title">Explore All Vehicles</h1>
+        <div class="result-count">
+          — <span id="product-count">0</span> results
+        </div>
+      </div>
+
+      <div class="filters-container">
+        <button class="filters-toggle" id="filters-toggle">Show Filters</button>
+
+        <div class="filters" id="filters">
+          <div class="filter-item" id="filter-year">
+            <span id="year-label">2025</span>
+            <div class="slider-track" id="size-track">
+              <div class="slider-handle" id="year"></div>
+            </div>
+          </div>
+
+          <div class="filter-item" id="filter-price">
+            <span id="price-label">Price: $0k - $1000k</span>
+            <div class="slider-track" id="price-track">
+              <div class="slider-handle" id="price-max"></div>
+            </div>
+          </div>
+
+          <div class="filter-item">
+            <span>Type</span>
+            <select id="category-filter">
+              <option selected>All</option>
+              <option>Sedan</option>
+              <option>Crossover</option>
+              <option>Sports</option>
+              <option>Electric</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <span>On sale: Yes</span>
+            <select id="sale-filter">
+              <option selected>All</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <span>Brand</span>
+            <select id="brand-filter">
+              <option selected>All Brands</option>
+              <option>Tesla</option>
+              <option>Porsche</option>
+              <option>BMW</option>
+              <option>Audi</option>
+              <option>Toyota</option>
+              <option>Honda</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <span>Color</span>
+            <select id="model-filter">
+              <option selected>Choose color</option>
+              <option>red</option>
+              <option>blue</option>
+              <option>green</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <span>Latest</span>
+            <select id="sort-options">
+              <option selected>Latest</option>
+              <option>Price: High-Low</option>
+              <option>Price: Low-High</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- product grid -->
+      <!--product 1-->
+      <div class="product-grid" id="product-grid">
+        <div
+          class="product-card on-sale"
+          data-brand="tesla"
+          data-model="model-s"
+          data-year="2024"
+          data-type="electric"
+          data-transmission="automatic"
+          data-fuel="hybrid"
+          data-seats="5"
+          data-price="89"
+          data-location="los-angeles-ca"
+          data-features="autopilot,bluetooth,backup-camera,lane-assist,carplay-androidauto"
+          data-condition="new"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/tesla.png"
+            alt="Tesla Model S"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Tesla Model S</div>
+            <div class="product-category">Electric</div>
+            <div class="product-year">2024</div>
+            <div class="product-price">USD 89,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card on-sale"
+          data-brand="bmw"
+          data-model="i8"
+          data-year="2023"
+          data-type="coupe"
+          data-transmission="automatic"
+          data-fuel="hybrid"
+          data-seats="4"
+          data-price="62"
+          data-location="new-york-ny"
+          data-features="bluetooth,backup-camera,parking-sensors,lane-assist,carplay-androidauto"
+          data-condition="new"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img src="images/mclaren-1.jpg" alt="BMW i8" class="product-image" />
+          <div class="product-info">
+            <div class="product-title">BMW i8</div>
+            <div class="product-category">Sedan</div>
+            <div class="product-year">2023</div>
+            <div class="product-price">USD 62,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-brand="audi"
+          data-model="rs7"
+          data-year="2022"
+          data-type="sports"
+          data-transmission="automatic"
+          data-fuel="gasoline"
+          data-seats="5"
+          data-price="34"
+          data-location="chicago-il"
+          data-features="bluetooth,backup-camera,adaptive-cruise-control,blind-spot-monitor,carplay-androidauto"
+          data-condition="used"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/mclaren-2.jpg"
+            alt="Audi RS7"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Audi RS7</div>
+            <div class="product-category">Sports</div>
+            <div class="product-year">2022</div>
+            <div class="product-price">USD 34,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-brand="ferrari"
+          data-model="roma"
+          data-year="2024"
+          data-type="crossover"
+          data-transmission="automatic"
+          data-fuel="gasoline"
+          data-seats="4"
+          data-price="79"
+          data-location="miami-fl"
+          data-features="launch-control,adaptive-cruise-control,leather-seats,bluetooth,carplay-androidauto"
+          data-condition="new"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/mclaren-3.jpeg"
+            alt="Ferrari Roma"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Ferrari Roma</div>
+            <div class="product-category">Crossover</div>
+            <div class="product-year">2024</div>
+            <div class="product-price">USD 79,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card on-sale"
+          data-brand="toyota"
+          data-model="supra"
+          data-year="2023"
+          data-type="sports"
+          data-transmission="manual"
+          data-fuel="gasoline"
+          data-seats="2"
+          data-price="27"
+          data-location="houston-tx"
+          data-features="bluetooth,backup-camera,lane-assist,carplay-androidauto,sport-mode"
+          data-condition="new"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/mclaren-4.jpeg"
+            alt="Toyota Supra"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Toyota Supra</div>
+            <div class="product-category">Sports</div>
+            <div class="product-year">2023</div>
+            <div class="product-price">USD 27,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card on-sale"
+          data-brand="honda"
+          data-model="civic"
+          data-year="2024"
+          data-type="sedan"
+          data-transmission="automatic"
+          data-fuel="gasoline"
+          data-seats="5"
+          data-price="25"
+          data-location="seattle-wa"
+          data-features="bluetooth,backup-camera,adaptive-cruise-control,lane-assist,carplay-androidauto"
+          data-condition="new"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/mclaren-5.jpeg"
+            alt="Honda Civic"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Honda Civic</div>
+            <div class="product-category">Sedan</div>
+            <div class="product-year">2024</div>
+            <div class="product-price">USD 25,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-brand="porsche"
+          data-model="911"
+          data-year="2023"
+          data-type="crossover"
+          data-transmission="automatic"
+          data-fuel="gasoline"
+          data-seats="4"
+          data-price="79"
+          data-location="san-francisco-ca"
+          data-features="sport-mode,backup-camera,lane-assist,adaptive-cruise-control,carplay-androidauto"
+          data-condition="used"
+          data-posted="2025-05-06"
+        >
+          <button class="heart-btn" onclick="toggleFavorite(this)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <img
+            src="images/mclaren-6.jpg"
+            alt="Porsche 911"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-title">Porsche 911</div>
+            <div class="product-category">Crossover</div>
+            <div class="product-year">2023</div>
+            <div class="product-price">USD 79,000.00</div>
+            <button class="view-details-btn" onclick="openDetails(this)">
+              View Details
+            </button>
+          </div>
+        </div>
+        <div id="car-listings" class="car-listings">
+          <!-- car cards will be aaded here by service managment -->
+        </div>
+        <div id="no-results" class="no-results" style="display: none">
+          <p>No results found. Try a different search.</p>
+        </div>
+      </div>
+    </section>
+    <!--footer section-->
+    <section class="footer">
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h3>AutoWheels</h3>
+            <p>
+              Your trusted partner for car rentals. We provide quality vehicles
+              at affordable prices to make your journey comfortable and
+              enjoyable.
+            </p>
+            <div class="social-media">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="#"><i class="fas fa-car"></i> Car Fleet</a>
+              <a href="#"><i class="fas fa-tag"></i> Special Offers</a>
+              <a href="#"><i class="fas fa-map-marker-alt"></i> Locations</a>
+              <a href="#"><i class="fas fa-question-circle"></i> FAQs</a>
+              <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+              <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>
+          </div>
+
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Drive Street, Car City</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-phone"></i>
+              <span>(555) 123-4567</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-envelope"></i>
+              <span>info@autowheels.com</span>
+            </div>
+            <div class="contact-info">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 8:00 AM - 8:00 PM</span>
+            </div>
+          </div>
+
+          <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>
+              Subscribe to our newsletter to receive updates on our latest
+              offers and discounts.
+            </p>
+            <form action="#" method="post">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 AutoWheels Car Rentals. All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
+    <script src="scripts/modelScript.js"></script>
+  </body>
+</html>

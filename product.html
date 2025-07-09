@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - Auto Wheels</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        color: #343a40;
+        background-color: #f9fafb;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        padding: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .back-link i {
+        margin-right: 8px;
+      }
+
+      .back-link:before {
+        content: "";
+        position: absolute;
+        background: #ff7eb3;
+        width: 0;
+        height: 2px;
+        bottom: -3px;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #ff7eb3;
+      }
+
+      .back-link:hover:before {
+        width: 100%;
+      }
+
+      .product-detail {
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image-container {
+        height: auto;
+        width: 40%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .product-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: all 0.3s ease;
+      }
+
+      .product-image-container:hover .product-image {
+        transform: scale(1.05);
+      }
+
+      .product-info {
+        flex: 1;
+        padding: 40px;
+        position: relative;
+      }
+
+      .product-info h1 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .product-info p {
+        margin: 12px 0;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+      }
+
+      .product-info strong {
+        min-width: 100px;
+        color: #6c757d;
+        font-weight: 500;
+      }
+
+      .info-section {
+        margin-bottom: 30px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e9ecef;
+      }
+
+      .info-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .info-item {
+        flex: 1;
+        min-width: 180px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: 1px solid #e9ecef;
+      }
+
+      .info-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-color: #ff7eb3;
+      }
+
+      .info-item i {
+        margin-right: 8px;
+        color: #ff7eb3;
+        font-size: 18px;
+      }
+
+      .info-item p {
+        margin: 0;
+      }
+
+      .info-item span {
+        font-weight: 500;
+      }
+
+      .price-section {
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .price-tag {
+        font-size: 36px;
+        font-weight: 600;
+        color: #333;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #ff7eb42f 0%, #ff7eb41a 100%);
+        display: inline-block;
+      }
+
+      .product-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff7eb3 0%, #ffd6e7 100%);
+        color: #fff;
+        padding: 15px 35px;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 50px;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px #ff7eb46d;
+      }
+
+      .product-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .product-btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transition: left 0.7s ease;
+      }
+
+      .product-btn:hover:before {
+        left: 100%;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 60px;
+        font-size: 18px;
+        color: black;
+      }
+
+      @media (max-width: 1024px) {
+        .product-detail {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .product-image-container {
+          width: 100%;
+          border-radius: 12px 12px 0 0;
+        }
+
+        .product-info {
+          padding: 20px;
+        }
+
+        .price-tag {
+          font-size: 28px;
+          padding: 8px 16px;
+        }
+
+        .product-btn {
+          padding: 12px 28px;
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .product-detail {
+          flex-direction: column;
+        }
+
+        .info-item {
+          flex: 1 1 100%;
+        }
+
+        .product-info h1 {
+          font-size: 24px;
+        }
+
+        .section-title {
+          font-size: 16px;
+        }
+
+        .price-tag {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .body,
+        .container {
+          padding: 20px 10px;
+        }
+
+        .product-info {
+          padding: 15px;
+        }
+
+        .product-info h1 {
+          font-size: 20px;
+        }
+
+        .price-section {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .product-btn {
+          width: 100%;
+          text-align: center;
+          padding: 12px 0;
+        }
+
+        .info-item {
+          padding: 10px;
+        }
+
+        .info-item i {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="modelpage.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Products
+      </a>
+    </div>
+    <div class="container">
+      <div class="product-image-container">
+        <img
+          id="car-image"
+          class="product-image"
+          src="/api/placeholder/600/400"
+          alt="Car Image"
+        />
+      </div>
+
+      <div class="product-detail">
+        <div class="product-info">
+          <h1 id="car-title">Loading...</h1>
+
+          <div class="info-section">
+            <div class="section-title">Vehicle Information</div>
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-tag"></i> <strong>Brand:</strong>
+                  <span id="car-brand">-</span>
+                </p>
+              </div>
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-calendar-alt"></i> <strong>Year:</strong>
+                  <span id="car-year">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-car"></i> <strong>Category:</strong>
+                  <span id="car-type">-</span>
+                </p>
+              </div>
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-cogs"></i> <strong>Model:</strong>
+                  <span id="car-model">-</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="section-title">Specifications</div>
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-road"></i> <strong>Transmission:</strong>
+                  <span id="car-transmission">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-gas-pump"></i> <strong>Fuel:</strong>
+                  <span id="car-fuel">-</span>
+                </p>
+              </div>
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-chair"></i> <strong>Seats:</strong>
+                  <span id="car-seats">-</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="section-title">Additional Details</div>
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <strong>Location:</strong>
+                  <span id="car-location">-</span>
+                </p>
+              </div>
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-tools"></i> <strong>Features:</strong>
+                  <span id="car-features">-</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-wrench"></i> <strong>Condition:</strong>
+                  <span id="car-condition">-</span>
+                </p>
+              </div>
+              <div class="info-item">
+                <p>
+                  <i class="fas fa-clock"></i> <strong>Posted:</strong>
+                  <span id="car-posted">-</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="price-section">
+            <div class="price-tag" id="car-price">-</div>
+          </div>
+
+          <a href="checkout.html" class="product-btn">
+            <i class="fas fa-shopping-cart"></i> Buy Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const carProduct = JSON.parse(localStorage.getItem("CarProduct"));
+
+      if (carProduct) {
+        document.getElementById("car-title").textContent = carProduct.title;
+        document.getElementById("car-brand").textContent = carProduct.brand;
+        document.getElementById("car-year").textContent = carProduct.year;
+        document.getElementById("car-type").textContent = carProduct.type;
+
+        document.getElementById("car-image").src = carProduct.image;
+        document.getElementById("car-model").textContent = carProduct.model;
+        document.getElementById("car-transmission").textContent =
+          carProduct.transmission;
+        document.getElementById("car-fuel").textContent = carProduct.fuel;
+        document.getElementById("car-seats").textContent = carProduct.seats;
+        document.getElementById("car-location").textContent =
+          carProduct.location;
+        document.getElementById("car-features").textContent =
+          carProduct.features;
+        document.getElementById("car-condition").textContent =
+          carProduct.condition;
+        document.getElementById("car-posted").textContent =
+          carProduct.datePosted;
+
+        document.getElementById(
+          "car-price"
+        ).textContent = `USD ${carProduct.price},000.00`;
+      } else {
+        document.querySelector(".product-detail").innerHTML =
+          "<div class='loading'><i class='fas fa-exclamation-circle'></i> Car information not found. Please go back and select a car.</div>";
+      }
+    </script>
+  </body>
+</html>

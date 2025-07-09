@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <title>Favorites - Auto Wheels</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        line-height: 1.6;
+        color: #333;
+        padding: 20px;
+      }
+      .favorites-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .favorites-title {
+        font-size: 24px;
+      }
+
+      .favorites-count {
+        color: #757575;
+        font-size: 16px;
+      }
+
+      .favorites-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        position: relative;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-img,
+      .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .product-info {
+        padding: 16px;
+      }
+
+      .product-title {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .product-category {
+        color: #757575;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .product-colors {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 12px;
+      }
+
+      .product-price {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .view-details-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      .view-details-btn:hover {
+        background-color: #333;
+      }
+
+      .heart-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: #ccc;
+        transition: color 0.3s ease;
+        z-index: 1;
+      }
+
+      .heart-btn.active {
+        color: #f44336;
+      }
+
+      .heart-btn:hover {
+        color: #f44336;
+      }
+
+      .empty-favorites {
+        text-align: center;
+        padding: 50px;
+        font-size: 18px;
+        color: #666;
+      }
+
+      .empty-favorites p {
+        margin-bottom: 15px;
+      }
+
+      .browse-btn {
+        padding: 8px 15px;
+        background-color: #ff7eb3;
+        text-decoration: none;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .browse-btn:hover {
+        background-color: #ffcbe1;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .back-link i {
+        margin-right: 8px;
+      }
+
+      .back-link:before {
+        content: "";
+        position: absolute;
+        background: #ff7eb3;
+        width: 0;
+        height: 2px;
+        bottom: -3px;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #ff7eb3;
+      }
+
+      .back-link:hover:before {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="modelpage.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Products
+    </a>
+
+    <header class="favorites-header">
+      <h1 class="favorites-title">Your Favorites</h1>
+      <div class="favorites-count">— <span id="fav-count"> 0</span> items</div>
+    </header>
+
+    <div id="favorites-container" class="favorites-container">
+      <!--  items will be loaded here  -->
+    </div>
+
+    <div id="empty-message" class="empty-favorites" style="display: none">
+      <p>You don't have any favorites yet.</p>
+      <a href="modelpage.html" class="browse-btn">Browse Products</a>
+    </div>
+
+    <script>
+      function updateFavoritesCount() {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const countElement = document.getElementById("fav-count");
+        if (countElement) countElement.textContent = favorites.length;
+      }
+
+      function setupFavoritesPage() {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const container = document.getElementById("favorites-container");
+        const emptyMessage = document.getElementById("empty-message");
+
+        if (favorites.length === 0) {
+          emptyMessage.style.display = "block";
+          return;
+        }
+
+        favorites.forEach((product) => {
+          const card = document.createElement("div");
+          card.className = "product-card on-sale";
+          card.innerHTML = `
+            <button class="heart-btn active" onclick="removeFromFavorites(this)">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            <img src="${product.image}" alt="${product.title}" class="product-image" />
+            <div class="product-info">
+              <div class="product-title">${product.title}</div>
+              <div class="product-category">Electric</div>
+              <div class="product-colors">5 Colours</div>
+              <div class="product-price">${product.price}</div>
+              <button class="view-details-btn">View Details</button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        updateFavoritesCount(); // initialize count on load
+      }
+
+      function removeFromFavorites(heartBtn) {
+        const card = heartBtn.closest(".product-card");
+        const title = card.querySelector(".product-title").textContent;
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        favorites = favorites.filter((item) => item.title !== title);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        card.remove();
+        updateFavoritesCount();
+
+        if (favorites.length === 0) {
+          document.getElementById("empty-message").style.display = "block";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", setupFavoritesPage);
+    </script>
+  </body>
+</html>
